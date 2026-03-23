@@ -1,42 +1,214 @@
-h1{
+:root {
+    --color-fondo: #000000;
+    --color-texto: #ffffff;
+    --color-borde: #ffffff;
+    --color-evento: transparent; 
+}
+
+body {
+    margin: 0;
+    font-family: monospace;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background-color 0.1s, color 0.1s;
+    overflow-x: hidden;
+}
+
+#fondo-eventos {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: var(--color-evento);
+    z-index: -1; 
+    pointer-events: none;
+    transition: background-color 0.5s ease;
+}
+
+.latido-activo {
+    animation: latirSangre 1.5s infinite alternate;
+}
+
+@keyframes latirSangre {
+    0% { background-color: transparent; }
+    100% { background-color: rgba(255, 0, 0); }
+}
+
+#btn-abrir-menu {
+    position: fixed;
+    top: 20px; left: 20px;
+    z-index: 50;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    border: 1px solid var(--color-borde);
+    padding: 10px;
+    cursor: pointer;
+}
+
+#menu-lateral {
+    position: fixed;
+    top: 0; left: 0;
+    width: 300px; height: 100vh;
+    background-color: var(--color-fondo);
+    border-right: 1px solid var(--color-borde);
+    z-index: 100;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease-in-out;
+}
+
+#menu-lateral.abierto {
+    transform: translateX(0); 
+}
+
+.btn-menu-item, #btn-cerrar-menu, #btn-reiniciar-sistema {
+    display: block; width: 100%;
+    margin-bottom: 15px; padding: 10px;
+    background: transparent; color: var(--color-texto);
+    border: 1px solid var(--color-borde);
+    cursor: pointer; font-family: monospace;
+}
+
+#separador-menu { border-color: var(--color-borde); margin: 30px 0; }
+
+.caja-contenido {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%; max-height: 80vh; overflow-y: auto;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    padding: 40px;
+    z-index: 200;
+}
+.oculta { 
+    display: none; 
+}
+.btn-cerrar-caja { 
+    background: transparent; 
+    color: var(--color-texto); 
+    border: 1px solid var(--color-borde); 
+    cursor: pointer; 
+    float: right; 
+    padding: 5px 10px;
+}
+
+#contenedor-barra-progreso {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 5px;
+    background-color: transparent;
+    z-index: 40;
+}
+
+#barra-progreso-interna {
+    height: 100%;
+    width: 0%; 
+    background-color: var(--color-borde);
+    transition: width 0.3s ease;
+}
+
+#capa-captcha {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 500;
+}
+
+#contenedor-captcha {
+    border: 1px solid #ffffff; 
+    padding: 30px;
+    background-color: #000000; 
+    color: #ffffff; 
     text-align: center;
-    font-size: 100px;
-    font-family: Audiowide ;
-    text-shadow: 3px 3px 5px rgb(0, 0, 0);
 }
 
-.div {
-    font-size: 30px;
-    background-color: black;
-    color: aliceblue;
-    padding: auto;
-    margin: auto;
-    width: 200px;
+#img-captcha-dinamica { 
+    width: 250px; 
+    height: 100px; 
+    display: block; 
+    margin: 0 auto 15px auto; 
+    object-fit: cover; 
+    border: 1px solid #333;
+}
+
+#input-captcha { 
+    background: #000; 
+    color: #fff; 
+    border: 1px solid #fff; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    width: 80%; 
+    text-align: center; 
+    font-family: monospace;
+}
+#btn-verificar-captcha { 
+    background: #000; 
+    color: #fff; 
+    border: 1px solid #fff; 
+    padding: 10px; 
+    cursor: pointer; 
+    font-family: monospace;}
+
+#mensaje-error-captcha { 
+    color: #ff3333;
+    margin-top: 10px; 
+    min-height: 20px;
+}
+
+.desenfocado { 
+    filter: blur(15px); 
+    pointer-events: none; 
+}
+
+#contenido-principal {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; 
+    width: 100vw;
+}
+
+#contenedor-central-dialogo {
+    width: 90%; 
+    max-width: 700px;
     text-align: center;
+    padding: 30px;
 }
 
-img{
-  display: block;
-  margin: auto;
-  width: 30%;   
+#texto-pregunta-actual {
+    font-size: 1.2rem; 
+    margin-bottom: 40px;
 }
 
-button{
-  background-color: #000000;
-  color: white;
-  padding: 20px 25px;
-  border: none;
-  border-radius: 5px;
-  justify-content: center;
-  font-size: 120%;
+.btn-respuesta {
+    display: block; 
+    width: 100%;
+    background-color: var(--color-fondo); 
+    color: var(--color-texto);
+    border: 1px solid var(--color-borde);
+    padding: 15px; margin-bottom: 15px;
+    font-size: 1rem; 
+    cursor: pointer; 
+    font-family: monospace;
+}
+.btn-respuesta:hover {
+    background-color: var(--color-texto); 
+    color: var(--color-fondo);
 }
 
-.divimage{
-  padding: 55px;
+#pantalla-final-visual video, #pantalla-final-visual img {
+    max-width: 100%; 
+    max-height: 300px; 
+    border: 1px dashed var(--color-borde); 
+    margin-bottom: 20px; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
 }
-
-.divbutton{
-  display: flex;
-  justify-content: center;
-}
-

@@ -1,24 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=+, initial-scale=1.0">
-    <title>Eje V</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V1V0</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Audiowide">
 </head>
 <body>
-    <h1>#V1V0</h1>
-    <div class="divimage"><img src="assets/captcha.png" alt="Palabra"></div>
-    
-    
-    <div>
-         <h2>Escribe la palabra </h2>
-         <input type="text" id="userInput" >
-         <div class="divbutton"><button type="button" onclick="alert('¡Hola!')">Verifica si eres un organismo</button></div>
+
+    <div id="fondo-eventos"></div>
+
+    <button id="btn-abrir-menu">☰ Menú</button>
+
+    <nav id="menu-lateral">
+        <button id="btn-cerrar-menu">✖</button>
+        <h3>Sistema Óseo (Menú)</h3>
+        <button class="btn-menu-item" id="btn-ver-investigacion">Investigación</button>
+        <button class="btn-menu-item" id="btn-ver-equipo">Equipo</button>
+        <button class="btn-menu-item" id="btn-ver-historial">Historial de Respuestas</button>
+        
+        <hr id="separador-menu">
+        <button id="btn-reiniciar-sistema">↻</button>
+    </nav>
+
+    <div id="caja-investigacion" class="caja-contenido oculta">
+        <button class="btn-cerrar-caja">✖</button>
+        <h2>V1V0</h2>
+        <p>Investigación</p>
     </div>
+
+    <div id="caja-equipo" class="caja-contenido oculta">
+        <button class="btn-cerrar-caja">✖</button>
+        <h2>Equipo</h2>
+        <p>Gabriela Alvarez Lopez, Yael Guadarrama, Héctor Enoc Quintana Montiel
+        </p>
+    </div>
+
+    <div id="caja-historial" class="caja-contenido oculta">
+        <button class="btn-cerrar-caja">✖</button>
+        <h2>Memoria a Corto Plazo</h2>
+        <ul id="lista-historial-respuestas"></ul>
+    </div>
+
+    <div id="capa-captcha">
+        <div id="contenedor-captcha">
+            <h2 id="titulo-captcha">Prueba de Conciencia</h2>
+            <img src="" alt="Imagen Captcha" id="img-captcha-dinamica"> 
+            <input type="text" id="input-captcha" placeholder="Ingresa la palabra de la imagen">
+            <button id="btn-verificar-captcha">Verifica si eres un organismo V1V0</button>
+            <p id="mensaje-error-captcha"></p>
+        </div>
+    </div>
+
+    <div id="contenedor-barra-progreso">
+        <div id="barra-progreso-interna"></div>
+    </div>
+
+    <main id="contenido-principal" class="desenfocado">
+        <div id="contenedor-central-dialogo">
+            <div id="pantalla-final-visual">
+                <video id="webcam-final" autoplay playsinline style="display:none;"></video>
+                <img id="rostro-final-img" src="" style="display:none;" alt="El rostro de la máquina">
+            </div>
+
+            <p id="texto-pregunta-actual">Esperando conexión...</p>
+            
+            <div id="contenedor-botones-respuesta">
+                <button id="btn-respuesta-a" class="btn-respuesta"></button>
+                <button id="btn-respuesta-b" class="btn-respuesta"></button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
-
-
-</html> 
+</html>
