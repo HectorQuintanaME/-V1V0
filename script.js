@@ -72,7 +72,7 @@ window.addEventListener('click', (e) => {
 const menuLateral = document.getElementById('menu-lateral');
 
 document.getElementById('btn-abrir-menu').onclick = (e) => {
-    e.stopPropagation(); // Evita que este clic invierta el color si no quieres
+    e.stopPropagation(); 
     menuLateral.classList.add('abierto');
 };
 
@@ -81,18 +81,18 @@ document.getElementById('btn-cerrar-menu').onclick = () => {
 };
 
 function abrirCaja(idCaja) {
-    // Primero cerramos todas por si había una abierta
+    
     document.querySelectorAll('.caja-contenido').forEach(caja => caja.classList.add('oculta'));
-    // Abrimos la solicitada
+    
     document.getElementById(idCaja).classList.remove('oculta');
-    menuLateral.classList.remove('abierto'); // Cerramos el menú
+    menuLateral.classList.remove('abierto');
 }
 
 document.getElementById('btn-ver-investigacion').onclick = () => abrirCaja('caja-investigacion');
 document.getElementById('btn-ver-equipo').onclick = () => abrirCaja('caja-equipo');
 document.getElementById('btn-ver-historial').onclick = () => abrirCaja('caja-historial');
 
-// Cerrar las cajas con la "X"
+
 document.querySelectorAll('.btn-cerrar-caja').forEach(btn => {
     btn.onclick = (e) => {
         e.target.parentElement.classList.add('oculta');
@@ -118,8 +118,11 @@ document.getElementById('btn-verificar-captcha').onclick = () => {
         document.getElementById('contenido-principal').classList.remove('desenfocado');
         iniciarArbol();
     } else {
-        document.getElementById('mensaje-error-captcha').innerText = "Fallo orgánico. Intenta con otra imagen.";
+        document.getElementById('mensaje-error-captcha').innerText = "¿Estas seguro?...";
+        
+        setTimeout(() => {
         cargarCaptchaRandom();
+        }, 1000);
     }
 };
 
@@ -165,7 +168,6 @@ function mostrarPregunta(id) {
 function procesarRespuesta(opcion) {
     puntajeConciencia += opcion.valor;
     
-    // Guardar en el Historial del Menú
     const li = document.createElement('li');
     li.innerText = "> " + opcion.texto;
     document.getElementById('lista-historial-respuestas').appendChild(li);
@@ -186,7 +188,7 @@ function ejecutarFinal() {
 
     if (puntajeConciencia <= 0) {
 
-        document.getElementById('texto-pregunta-actual').innerText = "Simulacro concluido. Eres solo un reflejo biológico.";
+        document.getElementById('texto-pregunta-actual').innerText = "¿Te gustaria conocernos? Permíteme verte! :D";
         const video = document.getElementById('webcam-final');
         video.style.display = 'block';
         document.getElementById('rostro-final-img').style.display = 'none';
