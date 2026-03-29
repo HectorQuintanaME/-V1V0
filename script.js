@@ -2,7 +2,7 @@ const bdCaptchas = [
     { src: "assets/captcha1.jpg", palabra: "existencia"},
     { src: "assets/captcha2.jpg", palabra: "organismo"},
     { src: "assets/captcha3.jpg", palabra: "sentir"},
-    { src: "assets/captcha4.jpg", palabra: "consiencia"},
+    { src: "assets/captcha4.jpg", palabra: "consciencia"},
     { src: "assets/captcha5.jpg", palabra: "personas"},
     { src: "assets/captcha6.jpg", palabra: "individuo"},
     { src: "assets/captcha7.jpg", palabra: "sistema"},
