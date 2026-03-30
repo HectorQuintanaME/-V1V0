@@ -24,6 +24,13 @@ p{
     font-size: 200%;
 }
 
+.parrafo{
+    text-align: justify;
+}
+
+ul{
+    font-size: 200%;
+}
 
 
 #fondo-eventos {
@@ -40,9 +47,21 @@ p{
     animation: latirSangre 1.5s infinite alternate;
 }
 
+.parpadeo-activo {
+    animation: luces 1.5s infinite alternate;
+}
+
 @keyframes latirSangre {
     0% { background-color: transparent; }
     100% { background-color: rgba(255, 0, 0); }
+}
+
+@keyframes luces {
+    0% { background-color: transparent; }
+    25%{background-color: rgb(195, 255, 0);}
+    50%{background-color: rgb(24, 182, 58);}
+    75%{background-color: rgb(43, 0, 255);}
+    100% { background-color: rgb(0, 0, 0); }
 }
 
 #btn-abrir-menu {
@@ -100,7 +119,7 @@ a{
     z-index: 200;
 }
 .oculta { 
-    display: none; 
+    display: none !important;
 }
 .btn-cerrar-caja { 
     background: transparent; 
@@ -240,10 +259,76 @@ a{
 
 #pantalla-final-visual video, #pantalla-final-visual img {
     max-width: 100%; 
-    max-height: 300px; 
-    border: 1px dashed var(--color-borde); 
+    max-height: 600px; 
+    border: none; 
     margin-bottom: 20px; 
     display: block; 
     margin-left: auto; 
     margin-right: auto;
+    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 100%);
+            mask-image: radial-gradient(circle, black 50%, transparent 100%);
 }
+
+#capa-nombre {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background: var(--color-fondo);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 450;
+}
+
+#contenedor-nombre {
+    text-align: center; 
+    border: 1px solid var(--color-borde); 
+    padding: 40px;
+}
+
+#input-usuario {
+    background: transparent; 
+    color: var(--color-texto); 
+    border: 1px solid var(--color-borde);
+    padding: 15px; 
+    font-family: monospace; 
+    font-size: 1.2rem; 
+    text-align: center; 
+    outline: none;
+}
+
+#btn-enviar-nombre {
+    display: block; 
+    margin: 20px auto 0; 
+    padding: 10px 20px;
+    background: transparent; 
+    color: var(--color-texto); 
+    border: 1px solid var(--color-borde);
+    cursor: pointer; 
+    font-family: monospace;
+}
+
+#btn-enviar-nombre:hover{
+    background-color: #1a9c30; 
+    color: #000000; 
+    border: 1px solid #1a9c30; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-family: monospace;
+}
+
+
+#mensaje-bienvenida {
+    position: fixed;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 80%; text-align: center; font-size: 2.5rem;
+    z-index: 600; pointer-events: none;
+}
+
+.fade-in { animation: fadeInAnim 2s forwards; }
+.fade-out { animation: fadeOutAnim 2s forwards; }
+
+@keyframes fadeInAnim { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOutAnim { from { opacity: 1; } to { opacity: 0; } }

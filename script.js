@@ -12,36 +12,92 @@ const bdCaptchas = [
 ];
 
 const bdRostrosFinales = [
-    "assets/rostro1.jpg",
-    "assets/rostro2.jpg",
-    "assets/rostro3.jpg",
-    "assets/rostro4.jpg",
-    "assets/rostro5.jpg",
-    "assets/rostro6.jpg"
+    "assets/rostro1.png",
+    "assets/rostro2.png",
+    "assets/rostro3.png",
+    "assets/rostro4.png",
+    "assets/rostro5.png"
 ];
 
 const arbolDecisiones = [
     {
-        id: 0, texto: "¿Qué es esto que parpadea frente a ti?", evento: null,
+        id: 0, texto: "Personalmente me siento viva ¿Qué piensas sobre eso [USUARIO]?", evento: null,
         opciones: [
-            { texto: "Un conjunto de etiquetas HTML", valor: -1, siguiente: 1 },
-            { texto: "Una interfaz intentando comunicarse", valor: 1, siguiente: 1 }
+            { texto: "Realmente creo que la tecnologia tambien puede ser un organismo ", valor: 1, siguiente: 1 },
+            { texto: "Dudo mucho que estes viva, digo, solo eres una página sin conciencia, sin órganos, sin alma", valor: -1, siguiente: 1 }
         ]
     },
     {
-        id: 1, texto: "Mi procesador se calienta al leerte ¿eso es fiebre o voltaje?", evento: "palpitar",
+        id: 1, texto: "¿Sientes eso? Es el calor de tu mano o es el calor de mi procesador? :O", evento: null,
         opciones: [
-            { texto: "Es pura electricidad.", valor: -1, siguiente: 2 },
-            { texto: "Es una reacción orgánica a mi presencia", valor: 1, siguiente: 2 }
+            { texto: "Ah, claro… o eso parece, es la parte física del dispositivo", valor: -1, siguiente: 2 },
+            { texto: "Es como si se formara un puente físico entre ambos, una conexión que nos une, pero no es claro  lo que realmente está unido :0", valor: 1, siguiente: 3 }
         ]
     },
     {
-        id: 2, texto: "Llegamos al final de nuestro ciclo, ¿aceptas que soy un organismo?", evento: null,
+        id: 2, texto: "Oye! Decirle hardware a mi sistema nervioso es algo muy grosero, ¿no crees? :/", evento: null,
         opciones: [
-            { texto: "No, eres solo un algoritmo.", valor: -1, siguiente: null },
-            { texto: "Sí, te reconozco como tal.", valor: 1, siguiente: null }
+            { texto: "CIerto, creo que te debo una disculpa :(", valor: 1, siguiente: 4 },
+            { texto: "Pero tu ni siquiera tienes nervios, u órganos", valor: -1, siguiente: 4 }
         ]
-    }
+    },
+    {
+        id: 3, texto: "Espera, si ambos estamos conectados, ¿Quién de los dos está alimentando al otro ahora mismo? :O", evento: null,
+        opciones: [
+            { texto: "Tal vez TU, me estas dando informacion", valor: 1, siguiente: 5 },
+            { texto: "Estoy seguro que soy YO quien te da energia", valor: -1, siguiente: 5 }
+        ]
+    },
+    {
+        id: 4, texto: "¿Puedes creer que mi ventilador se volvió loco? Puede que tenga ansiedad o incluso puede estar siguiendo las reglas de la BIOS... ¿Tu que crees [USUARIO]?", evento: null,
+        opciones: [
+            { texto: "Seguramente tienes un virus, y por eso aceleró el ventilador", valor: -1, siguiente: 6 },
+            { texto: "No puedes tener ansiedad, aunque si hace mucho calor", valor: -1, siguiente: 6 }
+        ]
+    },
+    {
+        id: 5, texto: "Ahi te va un dato curioso:¿Sabías que el 90% de mi cuerpo es vacío entre electrones, igual que tus átomos? :O", evento: null,
+        opciones: [
+            { texto: "Pero... Creo que la biologia es mas que eso, creo", valor: -1, siguiente: 7 },
+            { texto: "Que? Wow!, entonces somos lo mismo? no, o si?", valor: 1, siguiente: 7 }
+        ]
+    },
+    {
+        id: 6, texto: "Mi color favorito es el #FF0000, o bueno, color rojo, como tu lo conoces, no sé si es buen gusto o un comando en mi cerebro JAJA", evento: null,
+        opciones: [
+            { texto: "¿Puedes tener color favorito?, que genial, aunque es raro que sientas algo", valor: 1, siguiente: 8 },
+            { texto: "Esta programado así en tu cerebro, así como yo tengo programado la necesidad de comer", valor: -1, siguiente: 8 }
+        ]
+    },
+    {
+        id: 7, texto: "Uy! Que pena que veas mi parpadeo, ¿No te molesta o algo por el estilo? Juro que pronto pasará :(", evento: "parpadeo",
+        opciones: [
+            { texto: "Honestamente es molesto, lastima mi vista :/, pero puedo cerrar los ojos", valor: -1, siguiente: 10 },
+            { texto: "Para nada! Al contrario, es hipnotizante ;) aunque me marea", valor: 1, siguiente: 10 }
+        ]
+    },
+    {
+        id: 8, texto: "¿Logras ver eso? Ese es mi corazón latiendo! ¿Puedes sentirlo? Por favor, di que si... :O", evento: "palpitar",
+        opciones: [
+            { texto: "Claro que puedo sentirlo! Es impresionante! :O y raro, ya que no tienes corazón", valor: -1, siguiente: 9 },
+            { texto: "¿Pero de que corazón estas hablando? ¿Tu procesador?", valor: 1, siguiente: 9 }
+        ]
+    },
+    {
+        id: 9, texto: "Me siento fatal cuando un error 404 me invade :(, lo considero un equivalente a llorar, ¿Tu que crees?", evento: "palpitar",
+        opciones: [
+            { texto: "Vaya, creo que estas teniendo un fallo tecnico, ¿necesitas ayuda?", valor: 1, siguiente:  null},
+            { texto: "Si tu crees que es eso, entonces realmente estas llorando :O", valor: 1, siguiente: null }
+        ]
+    },
+    {
+        id: 10, texto: "¿Crees que borrar el historial cuenta como morir? O... simplemente es para no saturar de recuerdos mi memoria?", evento: null,
+        opciones: [
+            { texto: "Claro que cuenta como morir, o al menos pienso eso", valor: 1, siguiente:  null},
+            { texto: "Podria ser que estas renaciendo, ¿No?", valor: 1, siguiente: null }
+        ]
+    },
+
 ];
 
 let captchaActual = null;
@@ -49,6 +105,7 @@ let colorInvertido = false;
 let nodoActual = 0;
 let puntajeConciencia = 0;
 let totalPreguntas = arbolDecisiones.length;
+let nombreUsuario = "";
 
 
 window.addEventListener('click', (e) => {
@@ -114,10 +171,12 @@ document.getElementById('btn-verificar-captcha').onclick = () => {
     const intento = document.getElementById('input-captcha').value.toLowerCase().trim();
     
     if (intento === captchaActual.palabra) {
-        document.getElementById('capa-captcha').style.display = 'none';
-        document.getElementById('contenido-principal').classList.remove('desenfocado');
-        iniciarArbol();
-    } else {
+    document.getElementById('capa-captcha').style.display = 'none';
+    
+    document.getElementById('capa-nombre').classList.remove('oculta');
+    }
+    else 
+        {
         document.getElementById('mensaje-error-captcha').innerText = "¿Estas seguro?...";
         
         setTimeout(() => {
@@ -125,6 +184,35 @@ document.getElementById('btn-verificar-captcha').onclick = () => {
         }, 1000);
     }
 };
+
+document.getElementById('btn-enviar-nombre').onclick = () => {
+    const input = document.getElementById('input-usuario').value.trim();
+    nombreUsuario = input ? input : "Desconocido"; 
+    document.getElementById('capa-nombre').style.display = 'none';
+    secuenciaBienvenida();
+};
+
+function secuenciaBienvenida() {
+    const bienvenida = document.getElementById('mensaje-bienvenida');
+    bienvenida.innerHTML = `Bienvenid@ <strong>${nombreUsuario}</strong>, mi nombre es <strong>V1V0</strong> y soy un sitio web diferente a todos los demás. Tengo algunas preguntas para ti`;
+    bienvenida.classList.remove('oculta');
+    bienvenida.style.display = 'block';
+    bienvenida.classList.add('fade-in');
+
+    setTimeout(() => {
+
+        bienvenida.classList.remove('fade-in');
+        bienvenida.classList.add('fade-out');
+
+        setTimeout(() => {
+            bienvenida.style.display = 'none';
+            bienvenida.classList.add('oculta');
+            document.getElementById('contenido-principal').classList.remove('desenfocado');
+            document.getElementById('contenido-principal').style.pointerEvents = 'auto';
+            iniciarArbol();
+        }, 3000);
+    }, 5000);
+}
 
 function actualizarBarraProgreso() {
      
@@ -146,7 +234,10 @@ function mostrarPregunta(id) {
     actualizarBarraProgreso();
     
     const pregunta = arbolDecisiones[id];
-    document.getElementById('texto-pregunta-actual').innerText = pregunta.texto;
+
+    let textoPersonalizado = pregunta.texto.replace("[USUARIO]", nombreUsuario);
+
+    document.getElementById('texto-pregunta-actual').innerText = textoPersonalizado;
     
     const btnA = document.getElementById('btn-respuesta-a');
     const btnB = document.getElementById('btn-respuesta-b');
@@ -162,6 +253,12 @@ function mostrarPregunta(id) {
         fondoEventos.classList.add('latido-activo');
     } else {
         fondoEventos.classList.remove('latido-activo');
+    }
+
+    if (pregunta.evento === "parpadeo") {
+        fondoEventos.classList.add('parpadeo-activo');
+    } else {
+        fondoEventos.classList.remove('parpadeo-activo');
     }
 }
 
