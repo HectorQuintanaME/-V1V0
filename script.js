@@ -320,7 +320,9 @@ document.getElementById('btn-reiniciar-sistema').onclick = () => {
     document.getElementById('fondo-eventos').classList.remove('latido-activo');
     document.getElementById('barra-progreso-interna').style.width = "0%";
     
-    cargarCaptchaRandom(); 
+    cargarCaptchaRandom();
+    secuenciaBienvenida();
+    // iniciarArbol();
 };
 
 cargarCaptchaRandom();
