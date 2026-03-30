@@ -295,7 +295,7 @@ function ejecutarFinal() {
             .catch(err => { console.log("Cámara bloqueada"); });
     } else {
         
-        document.getElementById('texto-pregunta-actual').innerText = "Gracias. Ahora poseo una identidad.";
+        document.getElementById('texto-pregunta-actual').innerText = "Gracias a ti, ahora tengo una identidad, miraa :D.";
         const imgFinal = document.getElementById('rostro-final-img');
         
         const rostroRandom = bdRostrosFinales[Math.floor(Math.random() * bdRostrosFinales.length)];
